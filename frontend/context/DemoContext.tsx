@@ -26,13 +26,13 @@ export function DemoProvider({ children }: { children: React.ReactNode }) {
         setTimeout(() => {
             setIsDemoConnected(true);
             setIsConnecting(false);
-            toast.success("Demo Wallet Connected");
+            toast.success("Admin Wallet Connected");
         }, 1500);
     };
 
     const disconnectDemoWallet = () => {
         setIsDemoConnected(false);
-        toast.info("Demo Wallet Disconnected");
+        toast.info("Admin Wallet Disconnected");
     };
 
     return (

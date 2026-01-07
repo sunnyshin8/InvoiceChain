@@ -55,13 +55,13 @@ export function Navbar() {
                         <div className="flex items-center gap-4">
                             <div className="px-4 py-2 bg-amber-50 rounded-full font-mono text-sm font-medium flex items-center gap-2 border border-amber-200 text-amber-700">
                                 <Wallet className="w-4 h-4 text-amber-500" />
-                                <span className="text-xs uppercase font-bold bg-amber-200 px-1 rounded text-amber-800 mr-1">DEMO</span>
+                                <span className="text-xs uppercase font-bold bg-amber-200 px-1 rounded text-amber-800 mr-1">ADMIN</span>
                                 {demoAddress?.slice(0, 6)}...{demoAddress?.slice(-4)}
                             </div>
                             <button
                                 onClick={disconnectDemoWallet}
                                 className="p-2 text-gray-400 hover:text-red-600 transition-colors rounded-full hover:bg-red-50"
-                                title="Exit Demo"
+                                title="Exit Admin"
                             >
                                 <LogOut className="w-5 h-5" />
                             </button>
@@ -73,7 +73,7 @@ export function Navbar() {
                                 disabled={isConnecting}
                                 className="text-sm font-medium text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-gray-50 transition flex items-center gap-2"
                             >
-                                {isConnecting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Try Demo"}
+                                {isConnecting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Admin View"}
                             </button>
                             <div className="h-4 w-px bg-gray-200 mx-1"></div>
                             <ConnectButton />

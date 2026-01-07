@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAccount, useReadContract, usePublicClient } from 'wagmi';
 import { INVOICE_MANAGER_ABI, INVOICE_MANAGER_ADDRESS } from '@/app/constants';
 import { formatEther } from 'viem';
-import { InvoiceCard, Invoice } from './InvoiceCard';
+import { InvoiceCard, BlockchainInvoice as Invoice } from './InvoiceCard';
 import { Loader2 } from 'lucide-react';
 import { ConnectButton } from '../ConnectButton';
 import { useDemo } from '@/context/DemoContext';
@@ -94,7 +94,7 @@ export function InvoiceList({ limit }: { limit?: number }) {
                 );
 
                 // Sort by ID desc
-                data.sort((a, b) => Number(b.id - a.id));
+                data.sort((a: Invoice, b: Invoice) => Number(b.id - a.id));
                 setInvoices(data);
             } catch (e) {
                 console.error("Error fetching invoice details:", e);
@@ -109,7 +109,7 @@ export function InvoiceList({ limit }: { limit?: number }) {
     if (!address && !isDemoConnected) {
         return (
             <div className="text-center p-8 bg-gray-50 rounded-xl border border-dashed border-gray-300 flex flex-col items-center gap-4">
-                <p className="text-gray-600">Please connect your wallet or try Demo Mode to view invoices.</p>
+                <p className="text-gray-600">Please connect your wallet or try Admin Mode to view invoices.</p>
                 <ConnectButton className="bg-black text-white px-6 py-2 rounded-full font-bold hover:bg-gray-800 transition shadow-md" />
             </div>
         );

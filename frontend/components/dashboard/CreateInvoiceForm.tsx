@@ -100,7 +100,7 @@ export function CreateInvoiceForm() {
             if (isDemoConnected) {
                 // SIMULATE BLOCKCHAIN TX FOR DEMO
                 await new Promise(resolve => setTimeout(resolve, 2000));
-                toast.success("Demo Invoice Created! (Simulated On-Chain)", { id: toastId });
+                toast.success("Admin Invoice Created! (Simulated On-Chain)", { id: toastId });
             } else {
                 // Mock buyer verification (in real app, customer would have a linked wallet)
                 const buyerAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"; // Hardcoded for demo if customer doesn't have wallet
@@ -168,8 +168,8 @@ export function CreateInvoiceForm() {
                 {/* Items Table */}
                 <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Itemized Services / Products</label>
-                    <div className="border rounded-xl overflow-hidden">
-                        <table className="w-full text-left">
+                    <div className="border rounded-xl overflow-hidden overflow-x-auto">
+                        <table className="w-full text-left min-w-[600px]">
                             <thead className="bg-gray-50 text-xs font-semibold text-gray-500 uppercase">
                                 <tr>
                                     <th className="p-3">Description</th>
@@ -184,7 +184,7 @@ export function CreateInvoiceForm() {
                                     <tr key={item.id}>
                                         <td className="p-2">
                                             <input
-                                                className="w-full p-1 bg-transparent border-none focus:ring-0"
+                                                className="w-full p-1 bg-transparent border-none focus:ring-0 min-w-[200px]"
                                                 placeholder="Item description"
                                                 value={item.desc}
                                                 onChange={(e) => updateRow(item.id, 'desc', e.target.value)}

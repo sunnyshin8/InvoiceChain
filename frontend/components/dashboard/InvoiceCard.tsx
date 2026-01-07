@@ -113,22 +113,22 @@ export function InvoiceCard({ invoice, isBuyer, fullDetails }: { invoice: Blockc
                 {/* PDF Template Hidden */}
                 {fullDetails && <InvoicePDFTemplate invoice={fullDetails} />}
 
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
                     <div className="flex gap-4">
-                        <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center font-bold text-gray-400 border border-gray-100">
+                        <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center font-bold text-gray-400 border border-gray-100 shrink-0">
                             {/* Display ID: Truncate for simple view */}
                             #{invoice.id.toString().replace('inv-', '').slice(-6)}
                         </div>
                         <div>
                             <h3 className="font-bold text-gray-900 text-lg">Web Development Services</h3>
-                            <div className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+                            <div className="text-sm text-gray-500 mt-1 flex flex-wrap items-center gap-2">
                                 <span>From: {'vendor' in invoice ? invoice.vendor.slice(0, 6) : (invoice as FullInvoice).vendorDetails?.name}</span>
-                                <span>•</span>
+                                <span className="hidden md:inline">•</span>
                                 <span>Due: {new Date(Number(invoice.dueDate) * ('vendor' in invoice ? 1000 : 1)).toLocaleDateString()}</span>
                             </div>
                         </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-left md:text-right pl-[4rem] md:pl-0">
                         <div className="text-2xl font-bold text-gray-900">
                             {'amount' in invoice ? formatEther(invoice.amount) : (invoice as FullInvoice).totalAmount.toFixed(2)}
                         </div>
@@ -136,13 +136,13 @@ export function InvoiceCard({ invoice, isBuyer, fullDetails }: { invoice: Blockc
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-50">
-                    <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${status.color}`}>
+                <div className="flex flex-col sm:flex-row items-center justify-between mt-6 pt-4 border-t border-gray-50 gap-4">
+                    <div className={`w-full sm:w-auto flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${status.color}`}>
                         <StatusIcon className="w-3.5 h-3.5" />
                         {status.label.toUpperCase()}
                     </div>
 
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap justify-center sm:justify-end gap-2 w-full sm:w-auto">
                         {/* PDF Button */}
                         {fullDetails && (
                             <button

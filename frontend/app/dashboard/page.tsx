@@ -32,7 +32,7 @@ export default function DashboardPage() {
                 </div>
             </div>
 
-            <div className="mb-8 flex justify-between items-end">
+            <div className="mb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
                 <div>
                     <h1 className="text-3xl font-bold mb-2 text-gray-900 flex items-center gap-3">
                         Dashboard
@@ -42,7 +42,7 @@ export default function DashboardPage() {
                     </h1>
                     <p className="text-gray-500">Overview of your financial activity</p>
                 </div>
-                <Link href="/invoices/create" className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-indigo-700 transition shadow-lg">
+                <Link href="/invoices/create" className="w-full md:w-auto bg-indigo-600 text-white px-4 py-2 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-indigo-700 transition shadow-lg">
                     <Plus className="w-4 h-4" /> New Invoice
                 </Link>
             </div>
