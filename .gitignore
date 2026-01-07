@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+
+# Production
+build/
+dist/
+out/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.*
+
+# Next.js
+.next/
+frontend/.next/
+
+# Hardhat
+artifacts/
+cache/
+contracts/artifacts/
+contracts/cache/
+contracts/typechain-types/
+
+# Vercel
+.vercel/
+
+# TypeScript
+*.tsbuildinfo
