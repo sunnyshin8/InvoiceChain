@@ -64,6 +64,7 @@ export function InvoiceCard({ invoice, isBuyer, fullDetails }: { invoice: Blockc
     };
 
     const handleApprove = async () => {
+        if (!('amount' in invoice)) return;
         try {
             await writeContractAsync({
                 abi: INVOICE_MANAGER_ABI,
@@ -76,6 +77,7 @@ export function InvoiceCard({ invoice, isBuyer, fullDetails }: { invoice: Blockc
     };
 
     const handlePay = async () => {
+        if (!('amount' in invoice)) return;
         try {
             // 1. Approve MNEE
             await writeContractAsync({
@@ -96,6 +98,7 @@ export function InvoiceCard({ invoice, isBuyer, fullDetails }: { invoice: Blockc
     };
 
     const handleRelease = async () => {
+        if (!('escrowId' in invoice)) return;
         try {
             await writeContractAsync({
                 abi: SMART_ESCROW_ABI,
