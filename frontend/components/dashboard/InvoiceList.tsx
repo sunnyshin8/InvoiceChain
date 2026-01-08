@@ -1,5 +1,7 @@
 'use client';
 
+import { API_BASE_URL } from '@/lib/config';
+
 import { useState, useEffect } from 'react';
 import { useAccount, useReadContract, usePublicClient } from 'wagmi';
 import { INVOICE_MANAGER_ABI, INVOICE_MANAGER_ADDRESS } from '@/app/constants';
@@ -39,16 +41,26 @@ export function InvoiceList({ limit }: { limit?: number }) {
 
     useEffect(() => {
         // If Demo Connected: Fetch Mock Data from API
+        const fetchDemoInvoices = async () => {
+            try {
+                // In a real app, we'd fetch from API
+                fetch(`${API_BASE_URL}/api/invoices`)
+                    .then(res => res.json())
+                    .then(data => {
+                        // For demo, just show all or filter by mock user
+                        setInvoices(data);
+                    })
+                    .catch(err => console.error("Demo fetch error", err))
+                    .finally(() => setIsLoading(false));
+            } catch (e) {
+                console.error("Error fetching demo invoices:", e);
+                setIsLoading(false);
+            }
+        };
+
         if (isDemoConnected) {
             setIsLoading(true);
-            fetch('http://localhost:3001/api/invoices')
-                .then(res => res.json())
-                .then(data => {
-                    // For demo, just show all or filter by mock user
-                    setInvoices(data);
-                })
-                .catch(err => console.error("Demo fetch error", err))
-                .finally(() => setIsLoading(false));
+            fetchDemoInvoices();
             return;
         }
 

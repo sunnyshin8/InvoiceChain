@@ -1,5 +1,7 @@
 'use client';
 
+import { API_BASE_URL } from '@/lib/config';
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
 import { User, Phone, MapPin, Building2 } from 'lucide-react';
@@ -16,7 +18,7 @@ export function CustomerList() {
 
     const fetchCustomers = async () => {
         try {
-            const res = await fetch('http://localhost:3001/api/customers');
+            const res = await fetch(`${API_BASE_URL}/api/customers`);
             const data = await res.json();
             setCustomers(data);
         } catch (error) {

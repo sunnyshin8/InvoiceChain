@@ -1,5 +1,6 @@
 'use client';
 
+import { API_BASE_URL } from '@/lib/config';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MarketTicker } from '@/components/market/MarketTicker';
@@ -41,7 +42,7 @@ export default function MarketPage() {
             }
 
             // For real coins, fetch from backend history
-            const res = await axios.get(`http://localhost:3001/api/market/history`, {
+            const res = await axios.get(`${API_BASE_URL}/api/market/history`, {
                 params: { symbol, range: timeRange }
             });
             setHistoryData(res.data);
@@ -54,7 +55,7 @@ export default function MarketPage() {
         const fetchData = async () => {
             try {
                 // Fetch real data for major coins via our Backend Proxy, respecting the selected Range
-                const response = await axios.get('http://localhost:3001/api/market', {
+                const response = await axios.get(`${API_BASE_URL}/api/market`, {
                     params: { range }
                 });
                 setCoins(response.data);

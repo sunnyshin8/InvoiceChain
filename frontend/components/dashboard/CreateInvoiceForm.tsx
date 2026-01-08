@@ -1,5 +1,6 @@
 'use client';
 
+import { API_BASE_URL } from '@/lib/config';
 import { useState, useEffect } from 'react';
 import { useAccount, useWriteContract } from 'wagmi';
 import { INVOICE_MANAGER_ABI, INVOICE_MANAGER_ADDRESS } from '@/app/constants';
@@ -25,7 +26,7 @@ export function CreateInvoiceForm() {
 
     // Fetch Customers (simulate business data)
     useEffect(() => {
-        fetch('http://localhost:3001/api/customers')
+        fetch(`${API_BASE_URL}/api/customers`)
             .then(res => res.json())
             .then(data => setCustomers(data))
             .catch(err => console.error(err));
@@ -70,7 +71,7 @@ export function CreateInvoiceForm() {
 
         try {
             // 1. Upload Metadata to Backend
-            const response = await fetch('http://localhost:3001/api/invoices/create', {
+            const response = await fetch(`${API_BASE_URL}/api/invoices/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

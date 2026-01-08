@@ -105,8 +105,3 @@ Visit `http://localhost:3000` to launch the app.
 | **SmartEscrow** | *Deploy to see address* |
 
 ---
-
-## 🏆 Hackathon Track: Financial Automation
-**Problem**: Traditional B2B payments take 30-90 days and lack transparency.
-**Solution**: Programmable invoicing with embedded escrow logic.
-**Bonus**: Solves real coordination problems via approval workflows and instant tax calculation.

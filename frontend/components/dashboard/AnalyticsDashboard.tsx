@@ -6,11 +6,12 @@ import { Card, CardContent } from '../ui/Card';
 
 import { AnalyticsData } from '@/types';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { API_BASE_URL } from '@/lib/config';
 
 export function AnalyticsDashboard() {
     const { data: analytics } = useQuery<AnalyticsData>({
         queryKey: ['analytics'],
-        queryFn: () => fetch('http://localhost:3001/api/analytics').then(r => r.json())
+        queryFn: () => fetch(`${API_BASE_URL}/api/analytics`).then(r => r.json())
     });
 
     if (!analytics) return (
